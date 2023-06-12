@@ -1,16 +1,26 @@
 package com.example.ChattingBox.controller;
 
-import lombok.RequiredArgsConstructor;
+import com.example.ChattingBox.models.UserModel;
+import com.example.ChattingBox.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(path = "/chatting-box/api/user")
-@RequiredArgsConstructor
 public class UserController {
+    private final UserService userService;
+
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
     @GetMapping(path = "/testing")
-    public String testApp() {
-        return "Chatting Box - Testing Route";
+    public List<UserModel> testingRoute() {
+        return userService.testingRoute();
     }
 }
