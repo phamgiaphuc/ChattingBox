@@ -8,12 +8,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDate;
 
 @Entity
+@NotNull
 @Table(name = "user_account")
 public class UserModel {
     @SequenceGenerator(
@@ -37,14 +38,14 @@ public class UserModel {
     private String email;
 
     @CreatedDate
-    private LocalDate dateCreated = LocalDate.now();
+    private LocalDate createdDate = LocalDate.now();
 
-    public UserModel(long id, String name, String password, String email, LocalDate dateCreated) {
+    public UserModel(long id, String name, String password, String email, LocalDate createdDate) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.email = email;
-        this.dateCreated = dateCreated;
+        this.createdDate = createdDate;
     }
 
     public UserModel(String name, String password, String email) {
@@ -89,15 +90,15 @@ public class UserModel {
         this.email = email;
     }
 
-    public LocalDate getDateCreated() {
+    public LocalDate getCreatedDate() {
         return LocalDate.now();
     }
 
-    public void setDateCreated(LocalDate dateCreated) {
-        this.dateCreated = dateCreated;
+    public void setCreatedDate(LocalDate dateCreated) {
+        this.createdDate = dateCreated;
     }
 
     public String toString() {
-        return "User{" + "id=" + id + ", name=" + name + ", password=" + password + ", email=" + email + ", created date=" + dateCreated + "}";
+        return "User{" + "id=" + id + ", name=" + name + ", password=" + password + ", email=" + email + ", created date=" + createdDate + "}";
     }
 }

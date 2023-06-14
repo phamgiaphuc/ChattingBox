@@ -1,0 +1,19 @@
+CREATE TABLE subject (
+    id int PRIMARY KEY,
+    subject_id varchar[255] UNIQUE NOT NULL,
+    subject_name varchar[255] NOT NULL,
+    created_date date NOT NULL,
+    updated_date date NOT NULL
+);
+
+CREATE TABLE student_score (
+    id int PRIMARY KEY,
+    student_id varchar[255] UNIQUE NOT NULL,
+    subject_id varchar[255] UNIQUE NOT NULL,
+    test_time int UNIQUE NOT NULL,
+    test_score int NOT NULL,
+    created_date date NOT NULL,
+    updated_date date NOT NULL
+);
+
+ALTER TABLE "student_score" ADD FOREIGN KEY ("subject_id") REFERENCES "subject" ("subject_id");
