@@ -91,7 +91,7 @@ public class UserModel {
     }
 
     public LocalDate getCreatedDate() {
-        return LocalDate.now();
+        return createdDate;
     }
 
     public void setCreatedDate(LocalDate dateCreated) {
