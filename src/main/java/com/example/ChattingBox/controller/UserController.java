@@ -31,12 +31,12 @@ public class UserController {
     @PostMapping(path = "/register")
     public String registerNewUserAccount(@RequestBody UserModel newUser) {
         userService.addNewUser(newUser);
-        return "Done";
+        return "Add new account successful!";
     }
 
-    @DeleteMapping(path = "/{id}")
-    public String deleteUserAccount(@PathVariable("id") long id) {
-        userService.deleteUser(id);
-        return "Done";
+    @DeleteMapping(path = "/delete/{id}")
+    public String deleteUserAccount(@PathVariable("id") long userId) {
+        userService.deleteUser(userId);
+        return "Delete the account with id " + userId + " successful!";
     }
 }

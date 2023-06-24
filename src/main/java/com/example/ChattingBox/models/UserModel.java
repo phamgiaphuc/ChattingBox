@@ -26,7 +26,7 @@ public class UserModel {
             strategy = GenerationType.SEQUENCE,
             generator = "user_account_sequence"
     )
-    // Declare variables
+    // Variables
     @Id
     private long id;
 
