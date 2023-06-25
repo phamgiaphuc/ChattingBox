@@ -3,6 +3,7 @@ package com.example.ChattingBox.service;
 import com.example.ChattingBox.models.UserModel;
 import com.example.ChattingBox.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,6 +28,9 @@ public class UserService {
         if (userByEmail.isPresent()) {
             throw new IllegalStateException("Email is taken!");
         }
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String bcryptPassword = passwordEncoder.encode(newUser.getPassword());
+        newUser.setPassword(bcryptPassword);
         userRepository.save(newUser);
     }
 
