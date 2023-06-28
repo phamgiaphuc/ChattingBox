@@ -23,7 +23,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping(path = "/testing")
+    @GetMapping(path = "/infos")
     public List<UserModel> testingRoute() {
         return userService.testingRoute();
     }
