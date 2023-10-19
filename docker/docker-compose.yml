@@ -14,11 +14,12 @@ services:
 
   recipe:
     container_name: chattingbox_con
-    build:
-      context: .
-      dockerfile: Dockerfile
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+    image: giaphuc/chattingbox:1.0.0
     ports:
-      - '8080:8080'
+      - '8080:8080' #<computer/host_port>:<container_port>
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres_db:5432/chattingbox
       - SPRING_DATASOURCE_USERNAME=postgres
